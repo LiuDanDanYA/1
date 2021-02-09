@@ -48,7 +48,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
 
     class ForecastItemViewHolder extends RecyclerView.ViewHolder {
         final private TextView monthTV;
-        final private TextView dayTV;
+        final private TextView timeTV;
         final private TextView highTempTV;
         final private TextView lowTempTV;
         final private TextView shortDescriptionTV;
@@ -57,7 +57,7 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         public ForecastItemViewHolder(@NonNull View itemView) {
             super(itemView);
             monthTV = itemView.findViewById(R.id.tv_month);
-            dayTV = itemView.findViewById(R.id.tv_day);
+            timeTV = itemView.findViewById(R.id.tv_time);
             highTempTV = itemView.findViewById(R.id.tv_high_temp);
             lowTempTV = itemView.findViewById(R.id.tv_low_temp);
             popTV = itemView.findViewById(R.id.tv_pop);
@@ -72,11 +72,11 @@ public class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.Foreca
         }
 
         public void bind(ForecastDataItem forecastDataItem) {
-            monthTV.setText(forecastDataItem.getMonthString());
-            dayTV.setText(forecastDataItem.getDayString());
+            monthTV.setText(forecastDataItem.getMonthString() + " " + forecastDataItem.getDayString());
+            timeTV.setText(forecastDataItem.getTimeString());
             highTempTV.setText(forecastDataItem.getHighTemp() + "°F");
             lowTempTV.setText(forecastDataItem.getLowTemp() + "°F");
-            popTV.setText((int)(forecastDataItem.getPop() * 100.0) + "% precip.");
+            popTV.setText((int) (forecastDataItem.getPop() * 100.0) + "% precip.");
             shortDescriptionTV.setText(forecastDataItem.getShortDescription());
         }
 
